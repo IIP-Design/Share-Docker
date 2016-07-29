@@ -1,0 +1,38 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=wordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    ports:
+      - 33308:3306
+  wordpress:
+    depends_on:
+      - db
+    image: ylai:latest
+    links:
+      - db
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+      - YLAI_DB_NAME=wordpress
+      - YLAI_DB_USER=wordpress
+      - YLAI_DB_PASSWORD=wordpress
+      - YLAI_DB_HOST=db
+      - YLAI_AUTH_KEY=test
+      - YLAI_SECURE_AUTH_KEY=test
+      - YLAI_LOGGED_IN_KEY=test
+      - YLAI_NONCE_KEY=test
+      - YLAI_AUTH_SALT=test
+      - YLAI_SECURE_AUTH_SALT=test
+      - YLAI_LOGGED_IN_SALT=test
+      - YLAI_NONCE_SALT=test
+      - YLAI_DOMAIN_CURRENT_SITE=edit.america.dev
+    volumes:
+      - ./wp/:/var/www/html/wp
+      - ./wp-content/:/var/www/html/wp-content

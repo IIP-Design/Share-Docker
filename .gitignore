@@ -1,0 +1,8 @@
+.DS_Store
+vendor
+wp/
+wp-content/plugins
+wp-content/uploads
+wp-content/themes
+wp-content/sunrise.php
+wp-content/ewww
