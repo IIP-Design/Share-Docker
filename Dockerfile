@@ -17,10 +17,10 @@ COPY apache.conf/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 # Environmental variables for Wordpress
 ENV WORDPRESS_VERSION 4.5.3
 ENV WORDPRESS_SHA1 835b68748dae5a9d31c059313cd0150f03a49269
-ENV WEBROOT_REPO https://github.com/NathanKleekamp/ylai.git
+ENV WEBROOT_REPO https://github.com/USStateDept/ShareAmerica.git
 
 
-# Clone YLAI repo
+# Clone repo
 # Download Wordpress and compare checksums
 # Setup Wordpress webroot directory in /usr/src
 RUN git clone ${WEBROOT_REPO} /usr/src/wordpress \
